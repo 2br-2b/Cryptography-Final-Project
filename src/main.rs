@@ -4,21 +4,6 @@ use primes;
 use modinverse::modinverse;
 use num::BigInt;
 
-fn generate_prime() -> i128 {
-    loop{
-        let base: i128 = 2;
-        let number = rand::thread_rng().gen_range(1..=base.pow(32));
-
-        if primes::is_prime(number.try_into().unwrap()){
-            return number;
-        }else{
-            continue;
-        }
-        
-    }
-}
-
-
 fn main(){
 
     let p : i128= generate_prime();
@@ -59,6 +44,20 @@ fn main(){
 
 }
 
+fn generate_prime() -> i128 {
+    loop{
+        let base: i128 = 2;
+        let number = rand::thread_rng().gen_range(1..=base.pow(32));
+
+        if primes::is_prime(number.try_into().unwrap()){
+            return number;
+        }else{
+            continue;
+        }
+        
+    }
+}
+
 fn mod_pow(base: i128, exp: i128, modulus: i128) -> u64 {
    
     // **Warning**: Converting from BigInts to u64, so there may be some slight data loss
@@ -69,7 +68,6 @@ fn mod_pow(base: i128, exp: i128, modulus: i128) -> u64 {
     
     b[0]
 }
-
 
 fn input_int() -> i128 {
     loop{
